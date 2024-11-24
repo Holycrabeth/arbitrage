@@ -9,7 +9,7 @@ This repo serves for the sole purpose of learning until i have full capability o
      
        (https://github.com/6eer/uniswap-sushiswap-arbitrage-bot)
 
-       (https://github.com/codeesura/Arbitrage-uniswap-sushiswap)
+       (https://github.com/codeesura/Arbitrage-uniswap-sushiswap) take note that this code has a sushiswapV2Router Address Point towards arbitrum sushiswap v2 Router, the correct mainnet one should be 0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F
 
 
    - e.g. finding price discrepency between different uniswap pools of the same pair
