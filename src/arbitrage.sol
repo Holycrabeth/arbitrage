@@ -64,14 +64,16 @@ contract MyContract {
         require(amountOut_1 > _amountIn , "Arbitrage fail !");
         
     }
-    function withdrawWETH(uint256 amount) public onlyOwner {
-        uint256 contractBalance = IWETH9(WETH_ADDRESS).balanceOf(address(this));
+    // Withdraw a specific amount of any ERC20 token
+    function withdrawToken(address tokenAddress, uint256 amount) public onlyOwner {
+        uint256 contractBalance = IERC20(tokenAddress).balanceOf(address(this));
         require(amount <= contractBalance, "Insufficient balance in contract");
-        IWETH9(WETH_ADDRESS).transfer(msg.sender, amount);
+        IERC20(tokenAddress).transfer(msg.sender, amount);
     }
 
-    function withdrawAllWETH() public onlyOwner {
-        uint256 contractBalance = IWETH9(WETH_ADDRESS).balanceOf(address(this));
-        IWETH9(WETH_ADDRESS).transfer(msg.sender, contractBalance);
+    // Withdraw all balance of any ERC20 token
+    function withdrawAllTokens(address tokenAddress) public onlyOwner {
+        uint256 contractBalance = IERC20(tokenAddress).balanceOf(address(this));
+        IERC20(tokenAddress).transfer(msg.sender, contractBalance);
     }
 }
