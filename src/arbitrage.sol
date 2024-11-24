@@ -64,4 +64,15 @@ contract MyContract {
         require(amountOut_1 > _amountIn , "Arbitrage fail !");
         
     }
+    function withdrawWETH(uint256 amount) public onlyOwner {
+        uint256 contractBalance = IWETH9(WETH_ADDRESS).balanceOf(address(this));
+        require(amount <= contractBalance, "Insufficient balance in contract");
+        IWETH9(WETH_ADDRESS).transfer(msg.sender, amount);
+    }
+
+    function withdrawAllWETH() public onlyOwner {
+        uint256 contractBalance = IWETH9(WETH_ADDRESS).balanceOf(address(this));
+        IWETH9(WETH_ADDRESS).transfer(msg.sender, contractBalance);
+    }
+}
 }
