@@ -75,4 +75,3 @@ contract MyContract {
         IWETH9(WETH_ADDRESS).transfer(msg.sender, contractBalance);
     }
 }
-}
