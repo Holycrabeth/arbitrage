@@ -8,11 +8,15 @@ This repo serves for the sole purpose of learning until i have full capability o
   
      
        (https://github.com/6eer/uniswap-sushiswap-arbitrage-bot)
+
+       (https://github.com/codeesura/Arbitrage-uniswap-sushiswap)
+
+
    - e.g. finding price discrepency between different uniswap pools of the same pair
   
      
        (https://jamesbachini.com/dex-arbitrage/)
-2. __Finding the Best Route__
+1. __Finding the Best Route__
    - e.g. multihop of a trade in order to get the maximum output
   
      
