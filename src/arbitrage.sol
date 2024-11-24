@@ -34,6 +34,7 @@ interface IWETH9 {
 }
 
 contract MyContract {
+    address private owner;
     address constant WETH_ADDRESS = 0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6;
     address constant UNISWAP_ROUTER_ADDRESS = 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
     address constant SUSHISWAP_ROUTER_ADDRESS = 0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506;
@@ -41,8 +42,14 @@ contract MyContract {
     ISushiSwapRouter private sushiswapRouter;
 
     constructor() {
+        owner = msg.sender;
         uniswapRouter = IUniswapV2Router(UNISWAP_ROUTER_ADDRESS);
         sushiswapRouter = ISushiSwapRouter(SUSHISWAP_ROUTER_ADDRESS);
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Caller is not the owner");
+        _;
     }
 
     function swap(address _address,uint256 _amountIn) external {
