@@ -79,26 +79,26 @@ contract MyContract {
         
     }
     // Withdraw a specific amount of any ERC20 token
-    function withdrawToken(address tokenAddress, uint256 amount) public onlyOwner {
+    function withdrawToken(address tokenAddress, uint256 amount) external onlyOwner {
         uint256 contractBalance = IERC20(tokenAddress).balanceOf(address(this));
         require(amount <= contractBalance, "Insufficient balance in contract");
         IERC20(tokenAddress).transfer(msg.sender, amount);
     }
 
     // Withdraw all balance of any ERC20 token
-    function withdrawAllTokens(address tokenAddress) public onlyOwner {
+    function withdrawAllTokens(address tokenAddress) external onlyOwner {
         uint256 contractBalance = IERC20(tokenAddress).balanceOf(address(this));
         IERC20(tokenAddress).transfer(msg.sender, contractBalance);
     }
     // Withdraw ETH from the contract
-    function withdrawETH(uint256 amount) public onlyOwner {
+    function withdrawETH(uint256 amount) external onlyOwner {
         require(amount <= address(this).balance, "Insufficient balance in contract");
         (bool success, ) = msg.sender.call{value: amount}("");
         require(success, "Failed to send Ether");
     }
 
     // Withdraw all ETH stored in the contract
-    function withdrawAllETH() public onlyOwner {
+    function withdrawAllETH() external onlyOwner {
         (bool success, ) = msg.sender.call{value: address(this).balance}("");
         require(success, "Failed to send Ether");
     }
