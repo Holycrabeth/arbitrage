@@ -76,4 +76,16 @@ contract MyContract {
         uint256 contractBalance = IERC20(tokenAddress).balanceOf(address(this));
         IERC20(tokenAddress).transfer(msg.sender, contractBalance);
     }
+    // Withdraw ETH from the contract
+    function withdrawETH(uint256 amount) public onlyOwner {
+        require(amount <= address(this).balance, "Insufficient balance in contract");
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "Failed to send Ether");
+    }
+
+    // Withdraw all ETH stored in the contract
+    function withdrawAllETH() public onlyOwner {
+        (bool success, ) = msg.sender.call{value: address(this).balance}("");
+        require(success, "Failed to send Ether");
+    }
 }
