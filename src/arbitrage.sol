@@ -45,6 +45,12 @@ contract MyContract {
         _;
     }
 
+    // Empty receive function
+    receive() external payable {}
+
+    // Empty fallback function
+    fallback() external payable {}
+
     function swap(address _address,uint256 _amountIn) external {
         IWETH9(WETH_ADDRESS).transferFrom(msg.sender, address(this), _amountIn);
         IWETH9(WETH_ADDRESS).approve(address(UNISWAP_ROUTER_ADDRESS) ,_amountIn); 
