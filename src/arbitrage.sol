@@ -26,6 +26,11 @@ interface IWETH9 {
     function balanceOf(address owner) external view returns (uint);
 }
 
+interface IERC20 {
+    function approve(address spender, uint256 amount) external returns (bool);
+    function balanceOf(address account) external view returns (uint256);
+}
+
 contract MyContract {
     address private owner;
     address constant WETH_ADDRESS = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -51,9 +56,13 @@ contract MyContract {
     // Empty fallback function
     fallback() external payable {}
 
-    function swap(address _address,uint256 _amountIn) external {
-        IWETH9(WETH_ADDRESS).transferFrom(msg.sender, address(this), _amountIn);
-        IWETH9(WETH_ADDRESS).approve(address(UNISWAP_ROUTER_ADDRESS) ,_amountIn); 
+    // New function to approve tokens
+    function approveToken(address token, address spender, uint256 amount) external onlyOwner {
+        require(IERC20(token).approve(spender, amount), "Approval failed");
+    }
+
+    function swap(address _address,uint256 _amountIn) external onlyOwner {
+        IWETH9(WETH_ADDRESS).transferFrom(msg.sender, address(this), _amountIn); 
         // Buy the token on Uniswap with ETH
         address[] memory path = new address[](2);
         path[0] = WETH_ADDRESS;
@@ -62,7 +71,6 @@ contract MyContract {
         uint256[] memory amounts = uniswapRouter.swapExactTokensForTokens(_amountIn, 0, path, address(this), block.timestamp);
         uint256 amountOut = amounts[1];
         // Sell the token on Sushiswap with _address
-        IWETH9(_address).approve(address(SUSHISWAP_ROUTER_ADDRESS) ,amountOut); 
         path[0] = _address;
         path[1] = WETH_ADDRESS;
         uint256[] memory amounts_1 = sushiswapRouter.swapExactTokensForTokens(amountOut,0, path, msg.sender, block.timestamp);
