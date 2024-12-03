@@ -1,3 +1,40 @@
 # today we are going to improve on our profitcheckv2.js in order for it to output the optimum amount of amountIn.
 
 
+today something horrible happened in the morning, one of our group member in the staking community was hacked and all his movable funds in the wallet was stolen. 
+
+
+He reach out to me in the morning around 10am, i was shocked at first but slowly gained control of my mind. i knew the paramont of importance at the moment would to be able to retrieve the remainning staking funds safely. hacker already moved away majority of the liquid funds on layer 2, such as wstETH, USDT and USDC. victim was able to enter into a speed race with the hacker to retrieve some of the funds from layer 2 (30000USDT).
+
+
+the remainning minor funds on the mainnet was not touched by the hacker which leaves us some rooms of thoughts.
+
+
+- first of all, what was the reason that he did not transfer all the ETH native token out from the wallet? leaving 0.1 ETH for the GAS?
+
+
+- why isnt the hacker using scripts to retrieve funds from the Curve as the time duration for fund retrieval was about 4 mins. thats clearly a sign of hand operation
+
+
+- the hacker was smart enough to know that USDT and USDC are able to be frozen by third party so he manage to send the amount to something like a tornado cash for money laundering. the resulting effect was good as the funds coming out is purely monero which is totally untracable.
+
+
+- what will be our strategy for such case given the fact that we know nothing about the status of the hacker?
+
+
+- does he know that we still have 160ETH in the Beacon Chain? 
+
+
+- could there be risks if we do not initiate any withdrawal and then many years down the road we suddenly withdraw the staking funds? like along the way, will there be any possibility that the guy leak the private key to more and more people and then those other hacker are aware the funds are stucked inside and will monitor the wallet for any future withdrawal of funds on beacon chain?
+
+
+- if he knows there is some ETH on the Beacon Chain why isnt he monitoring the wallet for any increment of fund? yesterday there was a distribution of reward from staking in the afternoon and the amount of money the wallet obtained was 0.2ETH, by right if the hacker was monitoring this walle, he should have actively engaged in an operation to shift the funds out from the EOA using a script.
+
+
+- could this be a honey pot that the hacker left us to think that he does not know there is funds on beacon chain? and he is just waiting for us to initiate the withdrawal of funds from beacon chain so once the funds are available on mainnet he will immediately initiate a transfer function with a much much higher than normal gas fee just to get the funds faster than us.
+
+
+
+
+
+
