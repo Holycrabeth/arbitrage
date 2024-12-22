@@ -10,17 +10,21 @@ Ubuntu/Debian 系列
 sudo apt update
 sudo apt install shadowsocks-libev
 ```
+
+
 CentOS/RHEL 系列
 在 CentOS 系统上，首先需要安装 EPEL 源：
 
-代码语言：bash
-复制
+```bash
 sudo yum install epel-release
+```
+
+
 然后，安装 Shadowsocks-libev：
 
-代码语言：bash
-复制
+```bash
 sudo yum install shadowsocks-libev
+```
 2. 配置 Shadowsocks-libev
 Shadowsocks-libev 使用 JSON 格式的配置文件来配置服务器和客户端。默认的配置文件路径为 /etc/shadowsocks-libev/config.json，可以根据需要进行自定义。
 
