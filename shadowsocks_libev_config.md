@@ -30,9 +30,12 @@ Shadowsocks-libev 使用 JSON 格式的配置文件来配置服务器和客户�
 
 创建或编辑配置文件：
 
-代码语言：bash
-复制
+
+```bash
 sudo nano /etc/shadowsocks-libev/config.json
+```
+
+
 在文件中填入以下内容：
 
 ```json
@@ -40,10 +43,9 @@ sudo nano /etc/shadowsocks-libev/config.json
     "server": "0.0.0.0",
     "server_port": 8388,
     "local_address": "127.0.0.1",
-    "local_port": 1080,
     "password": "your_password",
     "timeout": 300,
-    "method": "chacha20-ietf-poly1305"
+    "method": "aes-256-gcm"
 }
 ```
 参数说明：
