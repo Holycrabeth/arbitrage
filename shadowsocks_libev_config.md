@@ -31,8 +31,7 @@ Shadowsocks-libev 使用 JSON 格式的配置文件来配置服务器和客户�
 sudo nano /etc/shadowsocks-libev/config.json
 在文件中填入以下内容：
 
-代码语言：json
-复制
+```json
 {
     "server": "0.0.0.0",
     "server_port": 8388,
@@ -42,6 +41,7 @@ sudo nano /etc/shadowsocks-libev/config.json
     "timeout": 300,
     "method": "chacha20-ietf-poly1305"
 }
+```
 参数说明：
 
 server: 服务器 IP 地址，如果你是服务器端用户，设置为 0.0.0.0，表示监听所有 IP 地址；如果是客户端用户，需要填入实际的 Shadowsocks 服务器地址。
