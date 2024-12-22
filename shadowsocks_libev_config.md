@@ -1,6 +1,6 @@
 Shadowsocks-libev 是一款轻量级的代理软件，常用于科学上网和隐私保护。它基于 Socks5 协议，支持加密和安全通信。本文将介绍如何在 Linux 系统上安装、配置和使用 Shadowsocks-libev。
 
-1. 安装 Shadowsocks-libev
+###1. 安装 Shadowsocks-libev
 Shadowsocks-libev 在大多数 Linux 发行版的软件源中都可以找到。下面分别介绍在 Ubuntu 和 CentOS 上的安装方法。
 
 Ubuntu/Debian 系列
@@ -25,7 +25,7 @@ sudo yum install epel-release
 ```bash
 sudo yum install shadowsocks-libev
 ```
-2. 配置 Shadowsocks-libev
+###2. 配置 Shadowsocks-libev
 Shadowsocks-libev 使用 JSON 格式的配置文件来配置服务器和客户端。默认的配置文件路径为 /etc/shadowsocks-libev/config.json，可以根据需要进行自定义。
 
 创建或编辑配置文件：
@@ -51,24 +51,40 @@ sudo nano /etc/shadowsocks-libev/config.json
 参数说明：
 
 server: 服务器 IP 地址，如果你是服务器端用户，设置为 0.0.0.0，表示监听所有 IP 地址；如果是客户端用户，需要填入实际的 Shadowsocks 服务器地址。
+
+
 server_port: 服务器端口，默认使用 8388。
+
+
 local_address: 本地代理的地址，通常设置为 127.0.0.1。
-local_port: 本地代理端口，通常为 1080，对应 Socks5 代理。
+
+
 password: 连接服务器的密码，必须与服务器端配置一致。
+
+
 timeout: 连接超时时间（秒），建议设置为 300。
-method: 加密方式，推荐使用 chacha20-ietf-poly1305。
-3. 启动 Shadowsocks-libev
+
+
+method: 加密方式，推荐使用 aes-256-gcm。
+
+
+###3. 启动 Shadowsocks-libev
 配置文件设置完成后，可以通过以下命令启动 Shadowsocks 服务：
 
-代码语言：bash
-复制
+
+```bash
 sudo systemctl start shadowsocks-libev
+```
+
+
 要确保服务开机自启，可以执行：
 
-代码语言：bash
-复制
+```bash
 sudo systemctl enable shadowsocks-libev
-4. 验证 Shadowsocks 是否正常工作
+```
+
+
+###4. 验证 Shadowsocks 是否正常工作
 启动服务后，可以使用以下命令查看 Shadowsocks-libev 的运行状态：
 
 代码语言：bash
