@@ -1,0 +1,16 @@
+### how to connect to the arbitrum feed relay?
+
+
+```bash
+docker run --rm -it  -p 0.0.0.0:9642:9642 --entrypoint relay offchainlabs/nitro-node:v3.2.1-d81324d --node.feed.output.addr=0.0.0.0 --node.feed.input.url=wss://arb1.arbitrum.io/feed --chain.id=42161
+```
+
+
+how to fetch the feed in realtime?
+
+
+```bash
+wscat -c wss://arb1.arbitrum.io/feed | jq .
+```
+
+
