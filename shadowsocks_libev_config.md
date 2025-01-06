@@ -40,12 +40,12 @@ sudo nano /etc/shadowsocks-libev/config.json
 
 ```json
 {
-    "server": "0.0.0.0",
-    "server_port": 8388,
-    "local_address": "127.0.0.1",
-    "password": "your_password",
-    "timeout": 300,
-    "method": "aes-256-gcm"
+    "server":["0.0.0.0"],
+    "mode":"tcp_and_udp",
+    "server_port":8388,
+    "password":"123456789myt",
+    "timeout":86400,
+    "method":"aes-256-gcm"
 }
 ```
 参数说明：
